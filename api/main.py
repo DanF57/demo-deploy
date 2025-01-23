@@ -42,7 +42,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -132,3 +132,7 @@ async def handle_chat_data(request: Request, protocol: str = Query('data')):
                 "detail": str(e)
             }
         )
+    
+@app.get("/")
+async def root():
+    return {"message": "Hello from FastAPI!"}
