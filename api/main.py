@@ -61,7 +61,7 @@ try:
     pc = Pinecone(api_key=PINECONE_API_KEY)
     index_name = "chatbot"  # Se está usando un solo índice pero con múltiples namespaces
     index = pc.Index(index_name)
-    namespace = "TestPersonal"  # Importante direccionar correctamente el namespace , namespace=namespace
+    namespace = "test_personal"  # Importante direccionar correctamente el namespace , namespace=namespace
     vectorstore = PineconeVectorStore(index=index, embedding=embeddings, namespace=namespace)
 except Exception as e:
     raise RuntimeError(f"Error al conectar con Pinecone o inicializar el vector store: {str(e)}")
