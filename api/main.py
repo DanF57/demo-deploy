@@ -61,7 +61,7 @@ try:
     pc = Pinecone(api_key=PINECONE_API_KEY)
     index_name = "chatbot"  # Se está usando un solo índice pero con múltiples namespaces
     index = pc.Index(index_name)
-    namespace = "test_parentTry"  # Importante direccionar correctamente el namespace , namespace=namespace
+    namespace = "TestPersonal"  # Importante direccionar correctamente el namespace , namespace=namespace
     vectorstore = PineconeVectorStore(index=index, embedding=embeddings, namespace=namespace)
 except Exception as e:
     raise RuntimeError(f"Error al conectar con Pinecone o inicializar el vector store: {str(e)}")
@@ -81,7 +81,7 @@ except Exception as e:
 docs_md = []
 for doc_path in [
     "./api/documents/Preguntas.pdf",
-    "./api/documents/Introduccion.pdf",
+    # "./api/documents/Introduccion.pdf",
     "./api/documents/CALENDARIO.pdf",
 ]:
     md_pages = pymupdf4llm.to_markdown(doc=doc_path, page_chunks=True)  # Extrae por página
