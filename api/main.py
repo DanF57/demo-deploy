@@ -20,9 +20,9 @@ from langchain_pinecone import PineconeVectorStore
 
 import pymupdf4llm
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.retrievers import ParentDocumentRetriever
-from langchain.storage import InMemoryStore
-from langchain.docstore.document import Document
+# from langchain.retrievers import ParentDocumentRetriever
+# from langchain.storage import InMemoryStore
+# from langchain.docstore.document import Document
 
 from pinecone import Pinecone
 
@@ -97,34 +97,34 @@ parent_splitter = RecursiveCharacterTextSplitter(chunk_size=2000)
 child_splitter = RecursiveCharacterTextSplitter(chunk_size=400)
 
 # # The storage layer for the parent documents
-store = InMemoryStore()
+# store = InMemoryStore()
 
-retriever = ParentDocumentRetriever(
-    vectorstore = vectorstore,
-    docstore = store,
-    child_splitter = child_splitter,
-    parent_splitter = parent_splitter,
-)
+# retriever = ParentDocumentRetriever(
+#     vectorstore = vectorstore,
+#     docstore = store,
+#     child_splitter = child_splitter,
+#     parent_splitter = parent_splitter,
+# )
 
-# Flatten the list of lists into a list of Documents
-docs_to_add = []
-for doc_list in docs_md:
-    for doc_page in doc_list:
-        # create a langchain Document object for each page in the markdown
-        docs_to_add.append(Document(page_content=doc_page["text"])) # Corrected line
+# # Flatten the list of lists into a list of Documents
+# docs_to_add = []
+# for doc_list in docs_md:
+#     for doc_page in doc_list:
+#         # create a langchain Document object for each page in the markdown
+#         docs_to_add.append(Document(page_content=doc_page["text"])) # Corrected line
 
-# Now add the documents
-retriever.add_documents(docs_to_add)
+# # Now add the documents
+# retriever.add_documents(docs_to_add)
 
-if retriever != None:
-    print("Parent in Memory Creado")
+# if retriever != None:
+#     print("Parent in Memory Creado")
 
 def stream_rag_response(messages: List[dict]):
     try:
         """Devuelve respuestas generadas con RAG como un stream compatible con Vercel AI SDK."""
         # Extraer última pregunta del usuario
         question = messages[-1]['content']
-        docs = retriever.invoke(question)
+        docs = vectorstore.invoke(question)
 
         docs_text = "".join(d.page_content for d in docs)
         # Formatear como una sola cadena de texto
