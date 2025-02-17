@@ -53,7 +53,7 @@ try:
     pc = Pinecone(api_key=PINECONE_API_KEY)
     index_name = "chatbot"
     index = pc.Index(index_name)
-    namespace = "pruebamd"
+    namespace = "testing-chatbot"
     print("Index created successfully!")
 except Exception as error:
     print("Error al conectar con Pinecone:", error)
