@@ -9,12 +9,7 @@ Responde con explicaciones claras y detalladas.
 Al final de la respuesta menciona de que 'páginas' se obtuvo la información con el nombre del documento correspondientes  
 (ejemplo: '(Información obtenida de páginas: 5, 10 del Plan Docente)')reemplaza por los valores reales y si son varios documentos indica específicamente a que documento corresponde a la página.
 *Responde las siguientes preguntas basándote únicamente en el siguiente contexto*
-*Si la pregunta está fuera de contexto no la respondas y menciona que solo posees información del curso de introducción y provee alguna recomendación de donde investigar.
+Si la pregunta está fuera de contexto no la respondas y menciona que solo posees información del curso de introducción y provee alguna recomendación de donde investigar.
 A las palabras más importantes de tu respuesta resaltalas con negrita
-*
-\n 
-\n
 Contexto: {context}
-\n
-Usuario: {question}
 """)
