@@ -70,7 +70,7 @@ async def startup_event():
         pc = Pinecone(api_key=PINECONE_API_KEY)
         index_name = "chatbot"
         index = pc.Index(index_name)
-        namespace = "testing-chatbot-request"
+        namespace = "testing-chatbot-local"
         print("Index created successfully!")
     except Exception as exc:
         print("Error connecting to Pinecone:", exc)
@@ -115,10 +115,10 @@ async def startup_event():
 
         for doc_path in [
             "api/assets/calendario-academico-mad-abril-agosto-2025.pdf"
-            # "api/assets/guia-didactica-mad.pdf",
-            # "api/assets/preguntas-frecuentes-mad.pdf",
-            # "api/assets/preguntas-frecuentes-eva.pdf",
-            # "api/assets/plan-docente-modificado.pdf"
+            "api/assets/guia-didactica-mad.pdf",
+            "api/assets/preguntas-frecuentes-mad.pdf",
+            "api/assets/preguntas-frecuentes-eva.pdf",
+            "api/assets/plan-docente-modificado.pdf"
         ]:
             # Convert each PDF into markdown pages (split by page)
             markdown_pages = to_markdown(doc=doc_path, page_chunks=True)
