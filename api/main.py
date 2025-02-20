@@ -84,7 +84,7 @@ async def startup_event():
 
     # Initialize vectorstore and in-memory docstore
     vectorstore = PineconeVectorStore(embedding=embeddings, index=index, namespace=namespace)
-    fs = LocalFileStore("/content/parent_store")
+    fs = LocalFileStore("api/parent_store")
     store = create_kv_docstore(fs)
     
     # Create text splitters for parent and child document chunks
