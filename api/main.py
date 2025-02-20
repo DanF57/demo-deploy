@@ -114,7 +114,7 @@ async def startup_event():
         docs_markdown = []
 
         for doc_path in [
-            "api/assets/calendario-academico-mad-abril-agosto-2025.pdf"
+            "api/assets/calendario-academico-mad-abril-agosto-2025.pdf",
             "api/assets/guia-didactica-mad.pdf",
             "api/assets/preguntas-frecuentes-mad.pdf",
             "api/assets/preguntas-frecuentes-eva.pdf",
